@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.APP_PORT ?? 5000;
 
 const welcome = (req, res) => {
-    res.send("Welcome to my favourite user list");
+    res.send("Welcome to my favourite movie list");
   };
   
   app.get("/", welcome);
@@ -15,6 +15,8 @@ const welcome = (req, res) => {
   
   app.get("/api/users", userHandlers.getUsers);
   app.get("/api/users/:id", userHandlers.getUserById);
+
+  app.post("/api/users", userHandlers.postUser); // création une route pour /api/users qui inserera un nouvel utilisateur dans la base de données
   
   app.listen(port, (err) => {
     if (err) {
